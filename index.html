@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching YouTube Data API V3 - Video Player</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .video-container {
+            margin-bottom: 20px;
+        }
+        #custom-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetching YouTube Data API V3 - Video Player</h1>
+
+    <div class="video-container" id="player-container1">
+        <div id="player1"></div>
+    </div>
+
+    <div class="video-container" id="player-container2">
+        <div id="player2"></div>
+    </div>
+
+    <div class="video-container" id="player-container3">
+        <div id="player3"></div>
+    </div>
+    <div class="video-container" id="player-container1">
+        <div id="player4"></div>
+    </div>
+
+    <div class="video-container" id="player-container2">
+        <div id="player5"></div>
+    </div>
+
+    <div class="video-container" id="player-container3">
+        <div id="player6"></div>
+    </div>
+
+    
+
+    <script>
+        let players = [];
+
+        function onYouTubeIframeAPIReady() {
+            createPlayer('player1', 'VIDEO_ID_1');
+            createPlayer('player2', 'VIDEO_ID_2');
+            createPlayer('player3', 'VIDEO_ID_3');
+            createPlayer('player4', 'VIDEO_ID_4');
+            createPlayer('player5', 'VIDEO_ID_5');
+            createPlayer('player6', 'VIDEO_ID_6');
+            
+        }
+
+        function createPlayer(playerId, videoId) {
+            players[playerId] = new YT.Player(playerId, {
+                height: '360',
+                width: '640',
+                videoId: videoId,
+                playerVars: {
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+        
+        }
+
+        function onPlayerStateChange(event) {
+        
+        }
+    </script>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>
